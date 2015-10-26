@@ -1,0 +1,13 @@
+{
+  "name": "potato",
+  "version": "1.0.0",
+  "description": "potato api task",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "python -m SimpleHTTPServer",
+    "watch": "sass --watch use/css/potato.scss:use/css/potato.css"
+  },
+  "author": "",
+  "license": "ISC"
+}

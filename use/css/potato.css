@@ -1,0 +1,135 @@
+@import url("https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css");
+@import url(https://fonts.googleapis.com/css?family=Noto+Sans:400,700);
+html {
+  box-sizing: border-box; }
+
+*, *::before, *::after {
+  box-sizing: inherit;
+  vertical-align: middle; }
+
+body {
+  font: 100%/1.4 'Noto Sans', sans-serif;
+  background: #fbfbfb;
+  color: #1f1f1f; }
+
+a:hover, a:focus {
+  text-decoration: none; }
+
+main {
+  max-width: 60em;
+  margin: 0 auto;
+  padding: 0 5%; }
+
+.page-head {
+  padding: 6.5% 0;
+  font-size: 1.5em; }
+
+.feed-item {
+  margin: 2em 0;
+  background: #f2f1ef;
+  box-shadow: 0px 0px 1px rgba(31, 31, 31, 0.6);
+  border-radius: 2px; }
+  .feed-item > div {
+    display: inline-block; }
+  .feed-item:first-of-type {
+    margin-top: 0; }
+
+.feed-image {
+  width: 20%; }
+
+img {
+  max-width: 100%;
+  height: auto; }
+
+.feed-content {
+  width: 80%;
+  padding: 0 1em; }
+
+.feed-title {
+  width: auto;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis; }
+
+.feed-meta ul {
+  list-style: none;
+  padding: 0; }
+  .feed-meta ul li {
+    display: inline-block;
+    padding: .5em 1em;
+    padding-left: 0; }
+  .feed-meta ul .published {
+    position: relative;
+    top: 2px; }
+
+.back-btn {
+  border: 0;
+  padding: .5em 1em;
+  background: #ddd; }
+
+.back-btn::before {
+  content: '';
+  width: 0;
+  border-style: solid;
+  border-color: transparent;
+  border-width: 1.1875em 1.1875em 1.1875em 0;
+  /* 19px / 16px */
+  border-right-color: #ddd;
+  display: block;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -19px;
+  height: 100%; }
+
+.back-btn:hover {
+  background: #ccc; }
+
+.back-btn:hover::before {
+  border-right-color: #ccc; }
+
+.single-open .list-view {
+  display: none; }
+
+.list-view .list-hidden {
+  display: none; }
+
+.single-view {
+  padding: 1em 0; }
+  .single-view .single-hidden {
+    display: none; }
+  .single-view .feed-content {
+    width: 100%;
+    position: relative; }
+  .single-view .feed-title {
+    font-size: 1.8em;
+    margin: 0;
+    width: 80%; }
+  .single-view .back-btn {
+    position: absolute;
+    right: 1em;
+    top: 1em; }
+  .single-view .feed-meta ul {
+    margin-top: 0; }
+  .single-view .feed-author::after {
+    content: '|';
+    margin-left: 1em; }
+  .single-view .item-desc {
+    display: block; }
+    .single-view .item-desc p:first-child {
+      display: none; }
+    .single-view .item-desc img {
+      float: left;
+      margin-right: 1em; }
+
+.published-mobile {
+  display: none; }
+
+@media screen and (max-width: 800px) {
+  .published {
+    display: none !important; }
+
+  .published-mobile {
+    display: block; } }
+
+/*# sourceMappingURL=potato.css.map */

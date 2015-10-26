@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Flickr Public Feed</title>
+    <link rel="stylesheet" href="use/css/potato.css">
+</head>
+<body>
+    <main>
+        <header class="page-head">
+            <h1>Flickr Public Feed</h1>
+        </header>
+        
+        <script type="text/template" id="feed-item-template">
+            <div class="feed-image single-hidden">
+                <img src="<%= media.m %>" alt="<%= title %>">
+            </div><div class="feed-content">
+                <h2 class="feed-title"><%= title %></h2>
+                <button class="back-btn list-hidden">Back</button>
+                <div class="feed-meta">
+                    <p class="published-mobile"><%= published %></p>
+                    <ul>
+                        <li class="feed-author"><a href="<%= author %>">Post author</a></li>
+                        <li class="published"><%= published %></li>
+                        <li class="item-link"><a href="<%= link %>">View on Flickr</a></li>
+                        <li class="item-desc list-hidden">
+                            <%= description %>
+                            <p class="item-tags">
+                                <%= tags %>    
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </script>
+    </main>
+    
+    <script src="use/js/underscore.js"></script>
+    <script src="use/js/jquery.js"></script>
+    <script src="use/js/backbone.js"></script>
+    <script src="use/js/potato.js"></script>
+</body>
+</html>
