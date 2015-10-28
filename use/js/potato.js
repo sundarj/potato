@@ -2,12 +2,25 @@
     
     var Photos = Backbone.Collection.extend({
         url: 'https://api.flickr.com/services/feeds/photos_public.gne?tags=potato&tagmode=all&format=json&jsoncallback=?',
+        
         parse: function (feed) {
             return feed.items
+        },
+        
+        search: function (query) {
+            if (!query)
+                return this;
+            
+            return _(this.filter(function (data) {
+                console.log(data);
+                return ~data.attributes.tags.indexOf(query);
+            }));
         }
     });
     
     var PhotoFeed = new Photos;
+    
+    var mainReset = $('main').html();
     
     var MainView = Backbone.View.extend({
         el: $('main'),
@@ -19,6 +32,22 @@
                 });
                 $(this.el).append(photo.render().el);
             }.bind(this));
+        },
+        
+        filter: function (subset) {
+            var el = $(this.el);
+            el.html(mainReset);
+            
+            subset.each(function (model) {
+               var photo = new PhotoView({
+                    model: model
+                });
+                el.append(photo.render().el);
+            });
+        },
+        
+        search: function (q) {
+            this.filter(PhotoFeed.search(q));
         },
         
         initialize: function () {
@@ -88,7 +117,10 @@
         template: _.template($('#feed-item-template').html()),
         
         render: function () {
-            this.model.attributes = renderAttributes(this.model.attributes);
+            if (!this.model.attributes.rent) {
+                this.model.attributes = renderAttributes(this.model.attributes);
+                this.model.attributes.rent = true;
+            }
             $(this.el).html(this.template(this.model.attributes));
             return this;
         },
@@ -128,6 +160,6 @@
         }
     });
     
-    var app = new MainView;
+    window.app = new MainView;
     
 })(window, document, _, jQuery, Backbone);
