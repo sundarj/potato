@@ -26,6 +26,20 @@ main {
     font-size: 1.5em;
 }
 
+.page-title { margin-bottom: 0 }
+
+#search {
+    border: 0;
+    outline: 0;
+    background: none;
+    font-size: .9em;
+    transition: border .3s;
+}
+    #search:focus {
+        border-left: 4px solid #ccc;
+        padding-left: 4px;
+    }
+
 .feed-item {
     margin: 2em 0;
     background: #f2f1ef;
@@ -104,7 +118,13 @@ img {
     .back-btn:hover::before { border-right-color: #ccc }
 
 
-.single-open .list-view { display: none }
+.single-open {
+    
+    .list-view, .single-hidden {
+        display: none;
+    }
+    
+}
 
 .list-view .list-hidden { display: none }
 

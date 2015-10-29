@@ -12,18 +12,18 @@
                 return this;
             
             return _(this.filter(function (data) {
-                console.log(data);
-                return ~data.attributes.tags.indexOf(query);
+                var tags = data.attributes.tags;
+                var cond = ~tags.indexOf(query);
+                
+                return cond;
             }));
         }
     });
     
     var PhotoFeed = new Photos;
     
-    var mainReset = $('main').html();
-    
     var MainView = Backbone.View.extend({
-        el: $('main'),
+        el: $('.feed-wrap'),
         
         render: function () {
             PhotoFeed.each(function (model) {
@@ -36,7 +36,7 @@
         
         filter: function (subset) {
             var el = $(this.el);
-            el.html(mainReset);
+            el.html('');
             
             subset.each(function (model) {
                var photo = new PhotoView({
@@ -48,6 +48,12 @@
         
         search: function (q) {
             this.filter(PhotoFeed.search(q));
+        },
+        
+        searchWith: function (sel) {
+            $(sel).keyup(function (evt) {
+                this.search($(evt.target).val());
+            }.bind(this));
         },
         
         initialize: function () {
@@ -118,7 +124,7 @@
         
         render: function () {
             if (!this.model.attributes.rent) {
-                this.model.attributes = renderAttributes(this.model.attributes);
+                renderAttributes(this.model.attributes);
                 this.model.attributes.rent = true;
             }
             $(this.el).html(this.template(this.model.attributes));
@@ -160,6 +166,10 @@
         }
     });
     
-    window.app = new MainView;
+    var app = new MainView;
+    
+    $(function () {
+        app.searchWith('#search');
+    });
     
 })(window, document, _, jQuery, Backbone);
